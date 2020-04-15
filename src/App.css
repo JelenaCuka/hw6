@@ -1,3 +1,15 @@
+html{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato';
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  max-width: 100%;
+}
+/*
+//from unknown reason I deceided to comment this instead of just deleting it
 .App {
   text-align: center;
 }
@@ -36,3 +48,4 @@
     transform: rotate(360deg);
   }
 }
+*/

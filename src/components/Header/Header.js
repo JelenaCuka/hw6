@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/img/logo.png';
-import './Header.css';
+//import Logo from '../../assets/img/logo.png';
+import './Header.scss';
 
 const links = {
     speakers: 'Speakers',
     events: 'Events',
-    clock: 'Clock',
+    home: 'Home',
 }
 
 const Header = () => {
     return (
-        <header class="header">
-        <div class="maxWidth1280">
-        {/*<Link to="/" className="">
-        <img className="" src={Logo} alt="Logo" />
+        <header className="Header">
+        <div className="Header-Inner">
+        {/*<Link to="/" className="LogoContainer">
+        <img className="LogoContainer-Image" src={Logo} alt="Logo" />
         </Link>*/}
-            <div class="logoLeft"></div>
-            <nav class="navigation">
-                <ul>
-                    <li><Link className="" to="/events">{links.events}</Link></li>
-                    <li><Link className="" to="/speakers">{links.speakers}</Link></li>
-                    <li><Link className="" to="/clock">{links.clock}</Link></li>
+            <div className="LogoContainer"></div>
+            <nav className="Header-Nav">
+                <ul className="Header-NavList">
+                    <li className="Header-NavListItem"><Link className="Header-NavLink" to="/events">{links.events}</Link></li>
+                    <li className="Header-NavListItem"><Link className="Header-NavLink" to="/speakers">{links.speakers}</Link></li>
+                    <li className="Header-NavListItem"><Link className="Header-NavLink" to="/">{links.home}</Link></li>
                 </ul>
             </nav>
         </div>
