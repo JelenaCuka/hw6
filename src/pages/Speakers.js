@@ -6,22 +6,22 @@ const templateParticipant = {
     title: "Johan Bach",
     cardClass: "iconType_speaker",
     paragraph: "Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one. ",
-    footerText: "Pati sudionika"
+    footerText: "Prati sudionika"
 };
 const speakersSectionHeading = "Sudionik sekcija";
 
 function generateItems() {
     var speakers = [];
     for (let i = 0; i < 5; i++) {
-        var newParticipant = JSON.parse(JSON.stringify(templateParticipant));;
+        var newParticipant = JSON.parse(JSON.stringify(templateParticipant));
         newParticipant.title = templateParticipant.title + " " + (i + 1).toString();
         speakers.push(newParticipant);
     }
     return speakers;
 }
-const eventsArray = generateItems();
+const speakersArray = generateItems();
 
-const speakersList = eventsArray.map(
+const speakersList = speakersArray.map(
     function (event, index) {
         return   (  <InfoboxContainerCard headerIcon={event.cardClass} headerHeading={event.title} footerLinkText={event.footerText} key={index}>
         <p>{event.paragraph}</p>

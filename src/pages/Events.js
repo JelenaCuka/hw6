@@ -20,7 +20,7 @@ const eventsSectionHeading = "Događanja";
 function generateItems() {
     let events = [];
     for (let i = 0; i < 5; i++) {
-        var newEvent = JSON.parse(JSON.stringify(templateEvent));;
+        var newEvent = JSON.parse(JSON.stringify(templateEvent));
         newEvent.title = templateEvent.title + " " + (i + 1).toString();
         events.push(newEvent);
     }

@@ -14,7 +14,7 @@ const InfoboxContainerCard = (props) => {
                 {props.children}
             </div>
             <div className="InfoboxContainerCard-Footer">
-                <a href="#">{props.footerLinkText}</a>
+                <a href="/#">{props.footerLinkText}</a>
             </div>
         </>
     );
