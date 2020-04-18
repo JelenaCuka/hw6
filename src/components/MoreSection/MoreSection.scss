@@ -1,0 +1,39 @@
+.MoreSection{
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    width: 1280px;
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    p{
+        justify-self: center;
+        max-width: 750px;
+        font-size: 18px;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+    button{
+        background-color: #c59613;
+        width: 160px;
+        height: 40px;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        border: 0px;
+        margin-bottom: 20px;
+    }
+    &-Inner{
+        padding: 20px;
+    }
+}
+@media only screen and ( min-width: 576px ){
+    .MoreSection{
+        &-Inner{
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+}

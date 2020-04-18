@@ -1,0 +1,109 @@
+.Header{
+    display: table;
+    background: #ffffff;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    &-Inner{
+        display: flex;
+        flex-direction: column;
+        .LogoContainer{
+            background-image: url('../../assets/images/logo.png');
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: auto 70px;
+            float: left;
+            width: 30%;
+            height: 80px;
+        }
+        
+    }
+    &-Nav{
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding-bottom: 5px;
+        float: right;
+    }
+    &-NavList{
+        color: #858686;
+        padding: 20px;
+        a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #000000;
+        }
+        a:hover{
+            color: #d0003e;
+        }
+    }
+    &-NavListItem{
+        list-style-type: none;
+        &_hangaba{
+            list-style-type: none;
+            text-align: right;
+        }
+    }
+
+}
+@media only screen and ( max-width: 575px ){
+    .Header{
+        .LogoContainer{
+            display: block;
+            width: 100%;
+        }
+        &-NavLink{
+            display: block;
+            border: none;
+            background: #ffffff;
+            border-bottom: 1px #e0e0e0 solid;
+            font-size: 24px;
+            text-align: center;
+            &_hangaba{
+                border: none;
+                background: #ffffff;
+                font-size: 24px;
+            }
+        }
+    }
+  
+}
+@media only screen and ( min-width: 576px ){
+    .Header{
+        &-Inner{
+            display: flex;
+            flex-direction: row;
+        }
+        &-Nav{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            width: 100%;
+        }
+        &-NavList{
+            width: 100%;
+            display: flex;//
+            flex-direction: row;//@extend
+            justify-content: flex-end;
+            padding: 20px;
+        }
+        &-NavListItem{
+            padding: 20px;
+            &_hangaba{
+                display: none;
+            }
+        }
+    }
+    
+}
+@media only screen and ( min-width: 768px ){
+
+}
+@media only screen and ( min-width: 1024px ) {
+    .Header{
+        &-Inner{
+            width: 1024px;
+            margin: 0 auto;
+        }
+    }
+}
