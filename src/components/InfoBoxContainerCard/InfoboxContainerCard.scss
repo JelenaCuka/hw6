@@ -53,12 +53,18 @@
         figure{
             flex-basis: 1;
             width:50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
             img{
                 align-self: center;
             }
             figcaption{
                 align-self: center;
                 width: 100%;
+                text-align: center;
+                
             }
         }
 
