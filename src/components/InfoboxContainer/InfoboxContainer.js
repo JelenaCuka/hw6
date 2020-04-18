@@ -3,11 +3,9 @@ import './InfoboxContainer.scss';
 
 const InfoboxContainer = (props) => {
     return (
-        <>
-            <section className="InfoboxContainer">
-                {props.children}
-            </section>
-        </>
+        <section className="InfoboxContainer">
+            {props.children}
+        </section>
     );
 }
 

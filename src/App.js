@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-//import './App.css';//+delete that file 
+import './App.scss';//+delete that file 
 
 //Components
 import Header from './components/Header/Header';

@@ -1,0 +1,79 @@
+.InfoboxContainerCard{
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    background: #efefef; 
+    padding: 15px; 
+    border-radius: 10px;
+    &-Header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-content: space-around;
+        border-bottom: #ffffff 2px solid;
+        &-Icon{
+            &_typeEvent{
+                background-repeat: no-repeat;
+                background-position: left center;
+                /*background-size: auto 70px;*/
+                background-size: contain;
+                width: 25px;
+                height: 25px;
+                background-image: url('../../assets/images/event-icon.png');
+            }
+            &_typeSpeaker{
+                background-repeat: no-repeat;
+                background-position: left center;
+                /*background-size: auto 70px;*/
+                background-size: contain;
+                width: 25px;
+                height: 25px;
+                background-image: url('../../assets/images/speakers-icon.png');
+            }
+
+        }
+       
+
+    }
+    &-MiddleContent{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: stretch;
+        align-content: space-around;
+        //border-bottom: #ffffff 2px solid;
+        p{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            border-bottom: #ffffff 2px solid;
+        }
+        figure{
+            flex-basis: 1;
+            width:50%;
+            img{
+                align-self: center;
+            }
+            figcaption{
+                align-self: center;
+                width: 100%;
+            }
+        }
+
+    }
+    &-Footer{
+        a{
+            text-decoration: none;
+            font-weight: bold;
+            font-style: normal;
+            font-size: 1.4em;
+            display: block;
+            text-align: center;
+            color: #000000;
+        }
+
+    }
+
+}

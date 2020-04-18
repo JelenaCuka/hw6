@@ -4,10 +4,10 @@ import InfoboxContainerCard from '../components/InfoBoxContainerCard/InfoboxCont
 
 import ImgEventLocation from '../assets/images/location-icon.png';
 import ImgEventClock from '../assets/images/time-icon.png';
-//proslijediti podatke kroz props
+
 const templateEvent = {
     title: "How can we benefit from React Redux",
-    cardClass: "iconType_event",
+    cardClass: "typeEvent",
     img1: ImgEventLocation,
     img1Caption: "Dvorana D09",
     img2: ImgEventClock,
@@ -24,23 +24,23 @@ function generateItems() {
         newEvent.title = templateEvent.title + " " + (i + 1).toString();
         events.push(newEvent);
     }
-    console.log(events);
     return events;
 }
 const eventsArray = generateItems();
 
 const eventList = eventsArray.map(
-    function (event) {
-        return   (  <InfoboxContainerCard headerIcon={event.cardClass} headerHeading={event.title} footerLinkText={event.footerText}>
-        <figure><img src={event.img1} alt="LocationIcon" /><figcaption>{event.img1Caption}</figcaption></figure>
-        <figure><img src={event.img2} alt="StopwatchIcon" /><figcaption>{event.img2Caption}</figcaption></figure>
-        <p>{event.paragraph}</p>
-    </InfoboxContainerCard>);
+    function (event, i) {
+        return (<InfoboxContainerCard headerIcon={event.cardClass} headerHeading={event.title} footerLinkText={event.footerText} key={("e" + i)}>
+            <p>
+                <figure><img src={event.img1} alt="LocationIcon" /><figcaption>{event.img1Caption}</figcaption></figure>
+                <figure><img src={event.img2} alt="StopwatchIcon" /><figcaption>{event.img2Caption}</figcaption></figure>
+            </p>
+            <p>{event.paragraph}</p>
+        </InfoboxContainerCard>);
     }
 
 );
 
-//<InfoboxContainerCard headerIcon="" headerHeading="" footerLinkText="">{/*children */}</InfoboxContainerCard>
 const Events = () => {
 
     return (
@@ -54,6 +54,3 @@ const Events = () => {
 }
 
 export default Events;
-
-
-//-	Events.js instead of events.html TODO >>DELETE COMMENT

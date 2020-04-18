@@ -1,0 +1,38 @@
+.InfoboxContainer{
+    width:100%;
+    display: grid;
+    justify-content: center;
+    
+
+}
+@media only screen and ( min-width: 576px ) and ( max-width: 767px){
+    .InfoboxContainer{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 8fr;
+        grid-gap: 20px;
+        padding: 20px 40px 20px 40px;
+        justify-content:space-around;
+        
+        h1{
+            grid-column: 1 /span 2;
+        }
+    }
+
+}
+@media only screen and ( min-width: 768px ){
+    .InfoboxContainer{
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 8fr;
+        grid-gap: 20px;
+        padding: 20px 40px 20px 40px;
+        justify-content:space-around;
+        h1{
+            grid-column: 1 /span 3;
+        }
+    }
+}
+@media only screen and ( min-width: 1024px ) {
+    .InfoboxContainer{
+        grid-gap: 30px;
+    }
+}
