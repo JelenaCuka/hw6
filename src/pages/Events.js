@@ -31,10 +31,10 @@ const eventsArray = generateItems();
 const eventList = eventsArray.map(
     function (event, i) {
         return (<InfoboxContainerCard headerIcon={event.cardClass} headerHeading={event.title} footerLinkText={event.footerText} key={("e" + i)}>
-            <p>
+            <div>
                 <figure><img src={event.img1} alt="LocationIcon" /><figcaption>{event.img1Caption}</figcaption></figure>
                 <figure><img src={event.img2} alt="StopwatchIcon" /><figcaption>{event.img2Caption}</figcaption></figure>
-            </p>
+            </div>
             <p>{event.paragraph}</p>
         </InfoboxContainerCard>);
     }
