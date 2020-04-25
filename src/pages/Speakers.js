@@ -3,6 +3,7 @@ import InfoboxContainer from '../components/InfoboxContainer/InfoboxContainer';
 import InfoboxContainerCard from '../components/InfoBoxContainerCard/InfoboxContainerCard';
 
 import speakersMockDataTable from '../lib/speakers';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const speakersSectionHeading = "Sudionik sekcija";
 const footerText = "Prati sudionika";

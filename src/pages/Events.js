@@ -6,6 +6,7 @@ import ImgEventLocation from '../assets/images/location-icon.png';
 import ImgEventClock from '../assets/images/time-icon.png';
 
 import { eventsMockDataTable } from '../lib/events';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const eventsSectionHeading = "Događanja";
 const img1Caption = "Dvorana D09";
@@ -25,6 +26,10 @@ const eventList = eventsMockDataTable.map(
 );
 
 const Events = () => {
+
+    getData: () => {
+
+    }
 
     return (
         <>
