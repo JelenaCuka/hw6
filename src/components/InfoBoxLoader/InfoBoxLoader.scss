@@ -1,0 +1,23 @@
+.InfoBoxLoader{
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    height: 100%;
+    width: 100%;
+    div{
+        align-self: center;
+    }
+    hr{
+        align-self: center; align-self: center;
+    }
+    &-Loader{
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        svg{
+            justify-self: center;
+        }
+    }
+}
