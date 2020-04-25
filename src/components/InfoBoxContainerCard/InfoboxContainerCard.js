@@ -2,6 +2,7 @@ import React from 'react';
 import './InfoboxContainerCard.scss';
 
 const InfoboxContainerCard = (props) => {
+    const linkFormatHelper = props.footerLink ? `${props.footerLink}#` : "/#" ;
     return (
         <div className="InfoboxContainerCard">
             <div className="InfoboxContainerCard-Header">
@@ -12,7 +13,7 @@ const InfoboxContainerCard = (props) => {
                 {props.children}
             </div>
             <div className="InfoboxContainerCard-Footer">
-                <a href="/#">{props.footerLinkText}</a>
+                <a href={linkFormatHelper} >{props.footerLinkText}</a>
             </div>
         </div>
     );
