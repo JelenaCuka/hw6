@@ -1,0 +1,21 @@
+.SearchBar{
+    grid-column: 1 /span 3;
+    display: flex;
+    flex-flow: nowrap row;
+    align-items: center;
+    justify-content: center;
+    input{
+        align-self: center;
+        width: 400px;
+        line-height: 50px;
+        border: 1px solid  #cecece;
+        border-radius: 6px;
+    }
+    input:focus{
+        border-color: #c59613;
+    }
+    &-Input{
+        align-self: center;
+    }
+
+}

@@ -1,4 +1,5 @@
 .InfoBoxLoader{
+    align-self: center;
     display: flex;
     flex-flow: wrap column;
     justify-content: center;
@@ -10,7 +11,7 @@
         align-self: center;
     }
     hr{
-        align-self: center; align-self: center;
+        align-self: center;
     }
     &-Loader{
         align-self: center;

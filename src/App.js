@@ -15,16 +15,16 @@ class App extends Component {
   render() {
     return (
       <>
-      <Header/>
-      <Main>
-        <Route exact path="/" component={Home} />
-        <Route path="/events" component={Events} />
-        <Route path="/speakers" component={Speakers} />
-      </Main>
+        <Header />
+        <Main>
+          <Route exact path="/" component={Home} />
+          <Route path="/events" component={Events} />
+          <Route path="/speakers" component={Speakers} />
+        </Main>
 
       </>
     );
-    }
+  }
 
 }
 

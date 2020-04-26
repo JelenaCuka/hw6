@@ -2,7 +2,7 @@ import React from 'react';
 import './InfoboxContainerCard.scss';
 
 const InfoboxContainerCard = (props) => {
-    const linkFormatHelper = props.footerLink ? `${props.footerLink}#` : "/#" ;
+    const linkFormatHelper = props.footerLink ? `${props.footerLink}#` : "/#";
     return (
         <div className="InfoboxContainerCard">
             <div className="InfoboxContainerCard-Header">

@@ -1,4 +1,4 @@
-import React,  { useState }  from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,15 +11,22 @@ const links = {
 }
 
 const Header = () => {
-    const [activeLink, setActiveLink] = useState(links.home);
-    function useOnNavClick(updateValue){
-        setActiveLink(updateValue.target.textContent.toString() );
+    function getRoute() {
+        var routeBase = window.location.pathname.toString().substr(1);
+        const routeTransformed = routeBase.replace(routeBase.charAt(0), routeBase.charAt(0).toUpperCase());
+        return routeTransformed;
     }
-    function classNameFormatHelper(navItemValue){
-        if(navItemValue==activeLink){
+
+    const [activeLink, setActiveLink] = useState(getRoute());
+    function useOnNavClick(updateValue) {
+        setActiveLink(updateValue.target.textContent.toString());
+    }
+    function classNameFormatHelper(navItemValue) {
+        if (navItemValue === activeLink) {
             return "Header-NavLink_active";
         }
         return "Header-NavLink";
+
     }
 
     return (
@@ -31,7 +38,7 @@ const Header = () => {
                         <li className="Header-NavListItem_hangaba" key="1"><Link className="Header-NavLink_hangaba" to="/"><FontAwesomeIcon className="_hangaba" icon={faBars} /></Link></li>
                         <li className="Header-NavListItem" key="2"><Link className={classNameFormatHelper(links.events)} to="/events" onClick={useOnNavClick} >{links.events}</Link></li>
                         <li className="Header-NavListItem" key="3"><Link className={classNameFormatHelper(links.speakers)} to="/speakers" onClick={useOnNavClick}  >{links.speakers}</Link></li>
-                        <li className="Header-NavListItem" key="4"><Link className={classNameFormatHelper(links.home)} to="/"  onClick={useOnNavClick} >{links.home}</Link></li>
+                        <li className="Header-NavListItem" key="4"><Link className={classNameFormatHelper(links.home)} to="/" onClick={useOnNavClick} >{links.home}</Link></li>
                     </ul>
                 </nav>
             </div>

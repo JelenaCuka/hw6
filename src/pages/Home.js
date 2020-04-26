@@ -1,4 +1,4 @@
-import React,  { useState, useEffect }  from 'react';
+import React, { useState, useEffect } from 'react';
 //Components 
 import HeroSection from '../components/HeroSection/HeroSection';
 import MoreSection from '../components/MoreSection/MoreSection';
@@ -7,9 +7,9 @@ import Progress from 'rsup-progress';
 
 const Home = () => {
     const [home, setHome] = useState('');
-    
+
     useEffect(() => {
-        setTimeout(function () { setHome(getHome); }, 5000);
+        setTimeout(function () { setHome(getHome); }, 1000);
     }
     );
     function getLoader() {
@@ -18,28 +18,26 @@ const Home = () => {
             color: '#d0003e',
         });
         progress.start();
-        //const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-        //progress.promise(Promise.all([home, delay(100)])) ;
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-        progress.promise(delay(1000),600);
+        progress.promise(delay(1000), 600);
         return <p bar={progress.toString()} ></p>;
-        
+
     }
     function getHome() {
         return (
             <>
-            <HeroSection />
-            <MoreSection />
-            <LastSection />
-        </>
+                <HeroSection />
+                <MoreSection />
+                <LastSection />
+            </>
         );
     }
     return (
         <>
-        {home ? getHome() : getLoader()}
-    </>
+            {home ? getHome() : getLoader()}
+        </>
     );
-    
+
 }
 
 export default Home;

@@ -1,12 +1,11 @@
 import React from 'react';
 import InfoboxContainer from '../components/InfoboxContainer/InfoboxContainer';
 import InfoboxContainerCard from '../components/InfoBoxContainerCard/InfoboxContainerCard';
-import InfoBoxLoader  from '../components/InfoBoxLoader/InfoBoxLoader';
+import InfoBoxLoader from '../components/InfoBoxLoader/InfoBoxLoader';
+import SearchBar from '../components/SearchBar/SearchBar';
 
 import ImgEventLocation from '../assets/images/location-icon.png';
 import ImgEventClock from '../assets/images/time-icon.png';
-
-
 
 import getEvents from '../services/events';
 import { useState, useEffect } from 'react';
@@ -17,16 +16,34 @@ const img2Caption = "24.3. u 13:45";
 
 const Events = () => {
     const [events, setEvents] = useState('');
+    const [eventsComputed, setEventsComputed] = useState('');
+    const [loaded, setLoaded] = useState(false);
+    var filterCriteria = '';
     useEffect(() => {
-        setTimeout(function () { setEvents(getEvents); }, 50000);
+        setTimeout(function () {
+            setEvents(getEvents);
+            setLoaded(true);
+        }, 1000);
     }
     );
+    useEffect(() => {
+        setEventsComputed(eventsComputed || events);
+    }
+    );
+    function handleSearchBarInputChange(inputValue) {
+        filterCriteria = inputValue.target.value;
+        var filtered = filterItems(events, filterCriteria);
+        setEventsComputed(filtered);
+    }
+    const filterItems = (arr, query) => {
+        return arr.filter(el => el.title.toLowerCase().includes(query.toLowerCase()));
+    }
 
     function getEventsFormated() {
         return (
             <>
                 <InfoboxContainer>
-                    {events.map(function (event, i) {
+                    {eventsComputed.map(function (event, i) {
                         return (<InfoboxContainerCard headerIcon="typeEvent" headerHeading={event.title} footerLinkText="Prijavi se na predavanje" key={("e" + i)} footerLink={event.link}>
                             <div>
                                 <figure><img src={ImgEventLocation} alt="LocationIcon" /><figcaption>{img1Caption}</figcaption></figure>
@@ -41,19 +58,18 @@ const Events = () => {
         );
     }
     function getLoader() {
-        //ThreeDots
-        //<InfoBoxLoader type="ThreeDots"></InfoBoxLoader>
         return (
-            <InfoboxContainer>
-            <InfoBoxLoader type="Oval"></InfoBoxLoader>
-            </InfoboxContainer>
+            <>
+                <InfoBoxLoader type="Oval"></InfoBoxLoader>
+            </>
         );
     }
 
     return (
         <>
             <h1>{eventsSectionHeading}</h1>
-            {events ? getEventsFormated() : getLoader()}
+            <SearchBar searchPlaceholder="Search events" handleChange={handleSearchBarInputChange} searchDisabled={!loaded} ></SearchBar>
+            {eventsComputed ? getEventsFormated() : getLoader()}
         </>
     );
 }

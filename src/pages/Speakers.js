@@ -2,7 +2,8 @@ import React from 'react';
 import InfoboxContainer from '../components/InfoboxContainer/InfoboxContainer';
 import InfoboxContainerCard from '../components/InfoBoxContainerCard/InfoboxContainerCard';
 
-import InfoBoxLoader  from '../components/InfoBoxLoader/InfoBoxLoader';
+import InfoBoxLoader from '../components/InfoBoxLoader/InfoBoxLoader';
+import SearchBar from '../components/SearchBar/SearchBar';
 import getSpeakers from '../services/speakers';
 import { useState, useEffect } from 'react';
 
@@ -13,19 +14,38 @@ const cardClass = "typeSpeaker";
 const Speakers = () => {
 
     const [speakers, setSpeakers] = useState('');
+    const [speakersComputed, setSpeakersComputed] = useState('');
+    const [loaded, setLoaded] = useState(false);
+    var filterCriteria = '';
     useEffect(() => {
-        setTimeout(function () { setSpeakers(getSpeakers); }, 50000);
+        setTimeout(function () {
+            setSpeakers(getSpeakers);
+            setLoaded(true);
+        }, 1000);
+
     }
     );
+    useEffect(() => {
+        setSpeakersComputed(speakersComputed || speakers);
+    }
+    );
+    function handleSearchBarInputChange(inputValue) {
+        filterCriteria = inputValue.target.value;
+        var filtered = filterItems(speakers, filterCriteria);
+        setSpeakersComputed(filtered);
+    }
+    const filterItems = (arr, query) => {
+        return arr.filter(el => el.title.toLowerCase().includes(query.toLowerCase()));
+    }
 
     function getSpeakersFormated() {
         return (
             <>
                 <InfoboxContainer>
-                    {speakers.map(function (speaker, index) {
-                        return  (<InfoboxContainerCard headerIcon={cardClass} headerHeading={speaker.title} footerLinkText={footerText} key={index} footerLink={speaker.link}>
-            <p>{speaker.about}</p>
-        </InfoboxContainerCard>);
+                    {speakersComputed.map(function (speaker, index) {
+                        return (<InfoboxContainerCard headerIcon={cardClass} headerHeading={speaker.title} footerLinkText={footerText} key={index} footerLink={speaker.link}>
+                            <p>{speaker.about}</p>
+                        </InfoboxContainerCard>);
                     })
                     }
                 </InfoboxContainer>
@@ -34,16 +54,15 @@ const Speakers = () => {
     }
     function getLoader() {
         return (
-            <InfoboxContainer>
             <InfoBoxLoader type="ThreeDots"></InfoBoxLoader>
-            </InfoboxContainer>
         );
     }
 
     return (
         <>
             <h1>{speakersSectionHeading}</h1>
-            {speakers ? getSpeakersFormated() : getLoader()}
+            <SearchBar searchPlaceholder="Search speakers" handleChange={handleSearchBarInputChange} searchDisabled={!loaded} ></SearchBar>
+            {speakersComputed ? getSpeakersFormated() : getLoader()}
         </>
     );
 }
