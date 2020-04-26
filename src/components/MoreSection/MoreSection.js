@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
+import About from '../About/About';
 import './MoreSection.scss';
 import * as MoreSectionConst from '../../assets/const-values/_more-section-const';
 
@@ -14,6 +15,7 @@ const MoreSection = (props) => {
         <section className="MoreSection">
             <p>{MoreSectionConst.moreSectionParagraph}</p>
             <button type="button">{MoreSectionConst.moreSectionButtonText}</button>
+            <About></About>
             <div className="MoreSection-Inner">
                 <Card image={ImgAbout} alt={MoreSectionConst.card1Text + ' slika'}>{MoreSectionConst.card1Text}</Card>
                 <Card image={ImgSpeakers} alt={MoreSectionConst.card2Text + ' slika'}>{MoreSectionConst.card2Text}</Card>

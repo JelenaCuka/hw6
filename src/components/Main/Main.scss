@@ -1,5 +1,12 @@
 .Main{
     align-self: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: nowrap column;
+    align-content: space-around;
+    align-items: center;
+    justify-content: flex-start;
     h1{
         text-align: center;
     }

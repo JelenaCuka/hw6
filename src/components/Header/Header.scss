@@ -1,4 +1,14 @@
 .Header{
+    &-NavLink{
+        &_active{
+            color: #c59613 !important;
+            border-bottom: 1.5px solid #c59613;
+        }
+       
+    }
+}
+
+.Header{
     display: table;
     background: #ffffff;
     width: 100%;
