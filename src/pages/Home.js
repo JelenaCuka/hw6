@@ -13,11 +13,14 @@ const Home = () => {
 
     useEffect(() => {
         progress.start();
-        setTimeout(() => {
-            progress.end();
-            setHome(homeComponents);
-        }, 1000);
     }, []);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setHome(homeComponents);
+            progress.end();
+        }, 1000);
+    }, [progress,home]);
 
     const homeComponents = () => {
         return (

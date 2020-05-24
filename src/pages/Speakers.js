@@ -6,7 +6,6 @@ import InfoBoxLoader from '../components/InfoBoxLoader/InfoBoxLoader';
 import SearchBar from '../components/SearchBar/SearchBar';
 import { getSpeakers } from '../services/speakers';
 import sessionStore from '../stores/sessionStore/sessionStore';
-
 const speakersSectionHeading = "Sudionik sekcija";
 const footerText = "Prati sudionika";
 const cardClass = "typeSpeaker";

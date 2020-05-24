@@ -64,7 +64,9 @@ decorate(SessionStore, {
     setToken: action,
     setIsActive: action
 });
+
 const sessionStore = new SessionStore();
+
 observerBatching(sessionStore);
 
 export default sessionStore; 
