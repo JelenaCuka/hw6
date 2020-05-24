@@ -35,7 +35,7 @@ const Header = (props) => {
     useEffect(() => {
         setActiveLink(getRoute());
         setShowLogoutBtn(session.isActive);
-    }, [showLogoutBtn,activeLink,session]);
+    }, [showLogoutBtn, activeLink, session]);
 
     function getRoute() {
         var routeBase = window.location.pathname.toString().substr(1);
