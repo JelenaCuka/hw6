@@ -1,4 +1,5 @@
-import { action, decorate, observable, reaction, autorun } from 'mobx';
+import { action, decorate, observable, reaction } from 'mobx';
+import { observerBatching } from "mobx-react";
 
 export class SessionStore {
     isActive = false;
@@ -6,10 +7,7 @@ export class SessionStore {
     sessionKillReact = reaction(
         () => this.isActive,
         (active) => {
-            console.log('KILL2');
-            console.log(active);
             if (!active) {
-                console.log('KILL');
                 this.sessionKill();
             }
         }
@@ -20,14 +18,14 @@ export class SessionStore {
     }
 
     getToken() {
-        var name = 'session-token' + "=";
+        var name = 'session-token=';
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
@@ -38,13 +36,15 @@ export class SessionStore {
         var d = new Date();
         d.setTime(d.getTime() + (5 * 24 * 60 * 60 * 1000));
         var expires = "expires=" + d.toUTCString();
-        document.cookie = 'session-token' + "=" + token + ";" + 'SameSite=None' + ";" + expires + ";path=/";
+        document.cookie = 'session-token=' + token + ';SameSite=None;' + expires + ';path=/';
         this.setIsActive(true);
+        localStorage.removeItem("logout");
     }
 
     sessionKill() {
-        document.cookie = 'session-token' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'session-token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         this.setIsActive(false);
+        localStorage.setItem("logout", "true");
     }
 
     setIsActive = (isActive) => {
@@ -64,7 +64,7 @@ decorate(SessionStore, {
     setToken: action,
     setIsActive: action
 });
-
 const sessionStore = new SessionStore();
+observerBatching(sessionStore);
 
 export default sessionStore; 

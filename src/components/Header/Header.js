@@ -4,7 +4,7 @@ import './Header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { observer, inject } from 'mobx-react';
-import { reaction, runInAction } from 'mobx';
+import { reaction } from 'mobx';
 import sessionStore from '../../stores/sessionStore/sessionStore';
 import { Redirect } from 'react-router-dom';
 
@@ -23,9 +23,8 @@ const Header = (props) => {
     const session = props.sessionStore;
 
     reaction(
-        () => props.sessionStore.isActive,
+        () => session.isActive,
         (active) => {
-            console.log('active=' + active);
             setShowLogoutBtn(active);
             if (!active) {
                 session.sessionKill();
@@ -34,8 +33,9 @@ const Header = (props) => {
     );
 
     useEffect(() => {
-        setShowLogoutBtn(props.sessionStore.isActive);
-    }, [showLogoutBtn]);
+        setActiveLink(getRoute());
+        setShowLogoutBtn(session.isActive);
+    }, [showLogoutBtn,activeLink,session]);
 
     function getRoute() {
         var routeBase = window.location.pathname.toString().substr(1);
@@ -49,8 +49,6 @@ const Header = (props) => {
 
     const classNameFormatHelper = (navItemValue) => {
         if (navItemValue === activeLink) {
-            return "Header-NavLink_active";
-        } else if (navItemValue === '') {
             return "Header-NavLink_active";
         }
         return "Header-NavLink";

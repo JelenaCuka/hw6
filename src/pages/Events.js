@@ -5,7 +5,6 @@ import InfoBoxLoader from '../components/InfoBoxLoader/InfoBoxLoader';
 import SearchBar from '../components/SearchBar/SearchBar';
 import { observer, inject } from 'mobx-react';
 import sessionStore from '../stores/sessionStore/sessionStore';
-import { action, decorate, observable, reaction, autorun } from 'mobx';
 import ImgEventLocation from '../assets/images/location-icon.png';
 import ImgEventClock from '../assets/images/time-icon.png';
 import { getEvents } from '../services/events';
@@ -18,7 +17,6 @@ const Events = (props) => {
     const [events, setEvents] = useState('');
     const [eventsComputed, setEventsComputed] = useState('');
     const [loaded, setLoaded] = useState(false);
-    // const [messageUpdated, setMessageUpdated] = useState('');
     const session = props.sessionStore;
     var filterCriteria = '';
 
@@ -28,14 +26,13 @@ const Events = (props) => {
                 if (response.data.events) {
                     setEvents(response.data.events);
                     setLoaded(true);
-                    // setMessageUpdated('Successful registration, ' + response.data.username + '!');
                 } else {
                     setLoaded(false);
                 }
             }
         });
         setEventsComputed(eventsComputed || events);
-    }, [loaded, eventsComputed, events]);
+    }, [loaded, eventsComputed, events, session]);
 
     const handleSearchBarInputChange = (inputValue) => {
         filterCriteria = inputValue.target.value;

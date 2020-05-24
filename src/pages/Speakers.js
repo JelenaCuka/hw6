@@ -6,8 +6,7 @@ import InfoBoxLoader from '../components/InfoBoxLoader/InfoBoxLoader';
 import SearchBar from '../components/SearchBar/SearchBar';
 import { getSpeakers } from '../services/speakers';
 import sessionStore from '../stores/sessionStore/sessionStore';
-import { action, decorate, observable, reaction, autorun } from 'mobx';
-import { Redirect } from 'react-router-dom';
+
 const speakersSectionHeading = "Sudionik sekcija";
 const footerText = "Prati sudionika";
 const cardClass = "typeSpeaker";
@@ -31,8 +30,7 @@ const Speakers = (props) => {
             }
         });
         setSpeakersComputed(speakersComputed || speakers);
-    }, [loaded, speakersComputed, speakers]
-    );
+    }, [loaded, speakersComputed, speakers, session]);
 
     const handleSearchBarInputChange = (inputValue) => {
         filterCriteria = inputValue.target.value;
