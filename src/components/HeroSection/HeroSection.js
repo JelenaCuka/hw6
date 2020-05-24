@@ -2,8 +2,8 @@ import React from 'react';
 import './HeroSection.scss';
 import * as HeroSectionConst from '../../assets/const-values/_hero-section-const';
 
-
 const HeroSection = (props) => {
+
     return (
         <section className="HeroSection">
             <div className="HeroSection-Inner">

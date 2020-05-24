@@ -4,7 +4,6 @@ import About from '../About/About';
 import './MoreSection.scss';
 import * as MoreSectionConst from '../../assets/const-values/_more-section-const';
 
-//Images
 import ImgAbout from '../../assets/images/about.jpg';
 import ImgSpeakers from '../../assets/images/speakers.jpg';
 import ImgAgenda from '../../assets/images/calendar.jpg';
