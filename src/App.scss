@@ -1,3 +1,27 @@
+@import '/assets/styles/_fonts.scss';
+html{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+
+  #root{
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+    max-width: 100%;
+  }
+  button:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+ 
+}
+
+/*
+//from unknown reason I deceided to comment this instead of just deleting it
 .App {
   text-align: center;
 }
@@ -36,3 +60,4 @@
     transform: rotate(360deg);
   }
 }
+*/
