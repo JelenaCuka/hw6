@@ -25,15 +25,16 @@ const Header = (props) => {
     reaction(
         () => session.isActive,
         (active) => {
-            setShowLogoutBtn(active);
             if (!active) {
                 session.sessionKill();
             }
+            setShowLogoutBtn(active);
         }
     );
 
     useEffect(() => {
         setShowLogoutBtn(session.isActive);
+        setActiveLink(getRoute());
     }, [showLogoutBtn, session]);
 
     function getRoute() {

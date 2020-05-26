@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { registerUser } from '../../../services/register';
+import { registerUser as RegisterUser} from '../../../services/register';
+import { observer, inject } from 'mobx-react';
+
 
 import {
     Form,
@@ -14,7 +16,8 @@ import {
     FormButton
 } from '../FormStyles';
 
-var RegisterForm = () => {
+var RegisterForm = (props) => {
+    const registerUser = props.RegisterUser;
     const { register, handleSubmit, errors, control } = useForm({
         nativeValidation: true
     });
@@ -82,4 +85,10 @@ var RegisterForm = () => {
     );
 }
 
-export default RegisterForm;
+function mapServicesToProps() {
+    return {
+        RegisterUser
+    }
+}
+
+export default inject(mapServicesToProps)(observer(RegisterForm));

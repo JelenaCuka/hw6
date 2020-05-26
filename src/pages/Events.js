@@ -47,15 +47,14 @@ const Events = (props) => {
     const getEventsFormated = () => {
         return (
             <InfoboxContainer>
-                {eventsComputed.map((event, i) => {
-                    return (<InfoboxContainerCard headerIcon="typeEvent" headerHeading={event.title} footerLinkText="Prijavi se na predavanje" key={("e" + i)} footerLink={event.link}>
+                {eventsComputed.map((event, i) => <InfoboxContainerCard headerIcon="typeEvent" headerHeading={event.title} footerLinkText="Prijavi se na predavanje" key={("e" + i)} footerLink={event.link}>
                         <div>
                             <figure><img src={ImgEventLocation} alt="LocationIcon" /><figcaption>{img1Caption}</figcaption></figure>
                             <figure><img src={ImgEventClock} alt="StopwatchIcon" /><figcaption>{img2Caption}</figcaption></figure>
                         </div>
                         <p>{event.about}</p>
-                    </InfoboxContainerCard>);
-                })}
+                    </InfoboxContainerCard>
+                )}
             </InfoboxContainer>
         );
     }

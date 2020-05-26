@@ -44,12 +44,10 @@ const Speakers = (props) => {
     const getSpeakersFormated = () => {
         return (
             <InfoboxContainer>
-                {speakersComputed.map((speaker, index) => {
-                    return (<InfoboxContainerCard headerIcon={cardClass} headerHeading={speaker.title} footerLinkText={footerText} key={index} footerLink={speaker.link}>
+                {speakersComputed.map((speaker, index) => <InfoboxContainerCard headerIcon={cardClass} headerHeading={speaker.title} footerLinkText={footerText} key={index} footerLink={speaker.link}>
                         <p>{speaker.about}</p>
-                    </InfoboxContainerCard>);
-                })
-                }
+                    </InfoboxContainerCard>
+                )}
             </InfoboxContainer>
         );
     }

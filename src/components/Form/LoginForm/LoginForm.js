@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { loginUser } from '../../../services/login';
+import { loginUser as LoginUser } from '../../../services/login';
 import sessionStore from '../../../stores/sessionStore/sessionStore';
 import { observer, inject } from 'mobx-react';
 
@@ -23,6 +23,7 @@ const LoginForm = (props) => {
     });
     const [successMsg, setSuccessMsg] = useState('');
     const session = props.sessionStore;
+    const loginUser = props.LoginUser;
 
     const onSubmit = data => {
         loginUser(data).then(response => {
@@ -82,7 +83,8 @@ const LoginForm = (props) => {
 
 function mapServicesToProps() {
     return {
-        sessionStore
+        sessionStore,
+        LoginUser
     }
 }
 
