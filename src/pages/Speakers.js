@@ -41,22 +41,17 @@ const Speakers = (props) => {
         return arr.filter(el => el.title.toLowerCase().includes(query.toLowerCase()));
     }
 
-    const getSpeakersFormated = () => {
-        return (
-            <InfoboxContainer>
-                {speakersComputed.map((speaker, index) => <InfoboxContainerCard headerIcon={cardClass} headerHeading={speaker.title} footerLinkText={footerText} key={index} footerLink={speaker.link}>
-                        <p>{speaker.about}</p>
-                    </InfoboxContainerCard>
-                )}
-            </InfoboxContainer>
-        );
-    }
+    const getSpeakersFormatted = () => <InfoboxContainer>
+        {speakersComputed.map((speaker, index) => <InfoboxContainerCard headerIcon={cardClass} headerHeading={speaker.title} footerLinkText={footerText} key={index} footerLink={speaker.link}>
+            <p>{speaker.about}</p>
+        </InfoboxContainerCard>)}
+    </InfoboxContainer>;
 
     return (
         <>
             <h1>{speakersSectionHeading}</h1>
             <SearchBar searchPlaceholder="Search speakers" handleChange={handleSearchBarInputChange} searchDisabled={!loaded} ></SearchBar>
-            {speakersComputed ? getSpeakersFormated() : <InfoBoxLoader type="ThreeDots"></InfoBoxLoader>}
+            {speakersComputed ? getSpeakersFormatted() : <InfoBoxLoader type="ThreeDots"></InfoBoxLoader>}
         </>
     );
 }

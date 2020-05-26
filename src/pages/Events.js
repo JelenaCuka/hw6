@@ -44,26 +44,21 @@ const Events = (props) => {
         return arr.filter(el => el.title.toLowerCase().includes(query.toLowerCase()));
     }
 
-    const getEventsFormated = () => {
-        return (
-            <InfoboxContainer>
-                {eventsComputed.map((event, i) => <InfoboxContainerCard headerIcon="typeEvent" headerHeading={event.title} footerLinkText="Prijavi se na predavanje" key={("e" + i)} footerLink={event.link}>
-                        <div>
-                            <figure><img src={ImgEventLocation} alt="LocationIcon" /><figcaption>{img1Caption}</figcaption></figure>
-                            <figure><img src={ImgEventClock} alt="StopwatchIcon" /><figcaption>{img2Caption}</figcaption></figure>
-                        </div>
-                        <p>{event.about}</p>
-                    </InfoboxContainerCard>
-                )}
-            </InfoboxContainer>
-        );
-    }
+    const getEventsFormatted = () => <InfoboxContainer>
+        {eventsComputed.map((event, i) => <InfoboxContainerCard headerIcon="typeEvent" headerHeading={event.title} footerLinkText="Prijavi se na predavanje" key={("e" + i)} footerLink={event.link}>
+            <div>
+                <figure><img src={ImgEventLocation} alt="LocationIcon" /><figcaption>{img1Caption}</figcaption></figure>
+                <figure><img src={ImgEventClock} alt="StopwatchIcon" /><figcaption>{img2Caption}</figcaption></figure>
+            </div>
+            <p>{event.about}</p>
+        </InfoboxContainerCard>)}
+    </InfoboxContainer>;
 
     return (
         <>
             <h1>{eventsSectionHeading}</h1>
             <SearchBar searchPlaceholder="Search events" handleChange={handleSearchBarInputChange} searchDisabled={!loaded} ></SearchBar>
-            {eventsComputed ? getEventsFormated() : <InfoBoxLoader type="Oval"></InfoBoxLoader>}
+            {eventsComputed ? getEventsFormatted() : <InfoBoxLoader type="Oval"></InfoBoxLoader>}
         </>
     );
 }

@@ -20,23 +20,15 @@ const Home = () => {
             setHome(homeComponents);
             progress.end();
         }, 1000);
-    }, [progress,home]);
+    }, [progress, home]);
 
-    const homeComponents = () => {
-        return (
-            <>
-                <HeroSection />
-                <MoreSection />
-                <LastSection />
-            </>
-        );
-    }
+    const homeComponents = <>
+        <HeroSection />
+        <MoreSection />
+        <LastSection />
+    </>;
 
-    return (
-        <>
-            {home}
-        </>
-    );
+    return <>{home}</>;
 
 }
 
